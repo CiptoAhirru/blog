@@ -2,7 +2,12 @@
 
 @section('container')
 <h1 class="mb-3 text-center">{{ $title }}</h1>
-
+  @if (session()->has('loginError'))
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('loginError') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+  @endif
   <div class="row justify-content-center">
     <div class="col-md-6">
       <form action="/home">

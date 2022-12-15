@@ -32,7 +32,7 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/categories', function(){
+Route::get('/categories', function () {
     return view('categories', [
         'title' => 'Post Categories',
         'categories' => Category::all()
@@ -41,12 +41,14 @@ Route::get('/categories', function(){
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/auth/google', [LoginController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.callback');
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard', function(){
+Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
 

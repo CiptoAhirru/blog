@@ -40,6 +40,7 @@
               </div>
               <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
             </form>
+            <a href="{{ route('google.login') }}" class="w-100 btn btn-lg btn-danger mt-5" type="submit">Login With Google</a>
             <small class="d-block text-center mt-3">Not registered? <a href="/register">Register now!</a></small>
           </main>
     </div>
